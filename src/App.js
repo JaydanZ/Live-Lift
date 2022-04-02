@@ -1,16 +1,36 @@
 import SignUp from "./components/SignUp/SignUp";
-import { Container } from 'react-bootstrap';
+import { Container } from "react-bootstrap";
+import { AuthProvider } from "./components/context/AuthContext.js";
+import { Route, useHistory } from "react-router-dom";
+import Login from "./components/SignUp/Login"
+import {useEffect} from 'react'
 
 function App() {
+  const history = useHistory();
+  useEffect(()=>{
+    if (history.location.pathname === "/"){
+      history.push("/signup");
+    }
+  },[]);
   return (
-      <Container className="d-flex align-items-center justify-content-center"
+    <AuthProvider>
+      <Container
+        className="d-flex align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
-        >
-        <div className="w-100" style={{ maxWidth: "400px" }}>
-          <SignUp />
-        </div>
+      >
+        <Route path="/signup">
+          <div className="w-100" style={{ maxWidth: "400px" }}>
+            <SignUp />
+          </div>
+        </Route>
+        <Route path="/login">
+          <div className="w-100" style={{ maxWidth: "400px" }}>
+            <Login />
+          </div>
+        </Route>
       </Container>
-  )
+    </AuthProvider>
+  );
 }
 
 export default App;
