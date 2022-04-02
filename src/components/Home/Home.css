@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,600&display=swap");
+
+html,
+body {
+  margin: 0px;
+}
+
+.homeCardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.homeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 400px;
+  height: 80%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 10px;
+  background: #1a1a1a;
+}
+
+.homeCardHeader {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 2.5rem;
+  color: #e6e6e6;
+  margin-top: 40px;
+}
+
+.programHeader {
+  position: relative;
+  margin-top: 50px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #e6e6e6;
+}
+
+.programHeader::before,
+.programHeader::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  width: 60px;
+  height: 2px;
+  background: #e6e6e6;
+  top: 50%;
+}
+
+.programHeader::before {
+  left: -45%;
+}
+
+.programHeader::after {
+  right: -45%;
+}
+
+.createProgramPrompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #e6e6e6;
+  border-radius: 15px;
+  height: 60px;
+  width: 80%;
+  margin-top: 40px;
+  background: #ff3c2e;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.createProgramBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20%;
+  font-size: 2rem;
+}

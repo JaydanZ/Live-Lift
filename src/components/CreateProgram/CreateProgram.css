@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,600&display=swap");
+
+.programTextField {
+  display: block;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  margin: 20px;
+  font-size: 1.2rem;
+  background: transparent;
+  color: #e6e6e6;
+  border-bottom: 1px solid #ff3c2e;
+}
+
+.programTextField ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff3c2e;
+  transition: 0.4s;
+}
+
+.programTextField:focus ~ .focus-border {
+  width: 100%;
+  transition: 0.4s;
+}
+
+.createProgramCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 400px;
+  height: 80%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 10px;
+  background: #1a1a1a;
+}
+
+.createProgramHeader {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 2.5rem;
+  color: #e6e6e6;
+  margin-top: 40px;
+}
+
+.formContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.programFormNameField,
+.programFormCycleField,
+.programFormDaysField {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.7rem;
+  margin-top: 40px;
+  color: #e6e6e6;
+}
+
+.programFormCycleField {
+  flex-direction: row;
+}
