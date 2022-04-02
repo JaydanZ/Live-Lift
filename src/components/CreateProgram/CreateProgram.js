@@ -51,6 +51,7 @@ const CreateProgram = () => {
                 min="1"
                 step="1"
                 onChange={daysChangeHandler}
+                placeholder="Ex: 1"
               />
             </div>
             <button type="button">Add Program</button>
