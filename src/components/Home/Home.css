@@ -15,6 +15,7 @@ body {
   overflow: hidden;
 }
 
+
 .homeCard {
   display: flex;
   flex-direction: column;

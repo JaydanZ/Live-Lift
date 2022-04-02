@@ -1,32 +1,27 @@
-import "./SignUp.css"
+import "./Login.css"
 import {Form, Button, Card, Alert} from 'react-bootstrap'
 import React, {useRef, useEffect, useState} from "react";
 import {useAuth} from '../context/AuthContext'
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const SignUp = () =>{
+const Login = () =>{
     const emailRef = useRef()
     const passwordRef = useRef()
-    const passwordConfirmRef = useRef()
-    const {signup} = useAuth()
-    const history = useHistory()
+    const {login} = useAuth()
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (passwordRef.current.value !== passwordConfirmRef.current.value){
-            setErrorMsg("Passwords do not match");
-        }
         try{ 
             setErrorMsg('');
             setLoading(true);
-            await signup(emailRef.current.value, passwordRef.current.value);
+            await login(emailRef.current.value, passwordRef.current.value);
             history.push("/home");
         } catch {
-            setErrorMsg("Failed to create account");
+            setErrorMsg("Failed to log in");
         }
         setLoading(false);
     }
@@ -35,7 +30,7 @@ const SignUp = () =>{
         <React.Fragment>
             <Card>
                 <Card.Body>
-                <h2 className="text-center mb-4">Sign Up</h2>
+                <h2 className="text-center mb-4">Log In</h2>
                 {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
@@ -46,19 +41,15 @@ const SignUp = () =>{
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" ref={passwordRef} required/>
                     </Form.Group>
-                    <Form.Group id="password-confirm">
-                        <Form.Label>Password Confirmation</Form.Label>
-                        <Form.Control type="password" ref={passwordConfirmRef} required/>
-                    </Form.Group>
-                    <Button disabled={loading} className="w-100" type="submit">Sign Up</Button>
+                    <Button disabled={loading} className="w-100" type="submit">Log In</Button>
                 </Form>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Already have an account? <Link to="/login">Log in.</Link>
+                Don't have an account? <Link to="/signup">Sign up.</Link>
             </div>
         </ React.Fragment>
     );
 }
 
-export default SignUp;
+export default Login;
