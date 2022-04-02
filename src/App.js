@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { AuthProvider } from "./components/context/AuthContext.js";
 import { Route, useHistory } from "react-router-dom";
 import Login from "./components/SignUp/Login"
+import Home from "./components/Home/Home"
 import {useEffect} from 'react'
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Login />
           </div>
+        </Route>
+        <Route path="/home">
+          <Home />
         </Route>
       </Container>
     </AuthProvider>

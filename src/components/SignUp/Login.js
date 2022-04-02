@@ -19,6 +19,7 @@ const Login = () =>{
             setErrorMsg('');
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
+            history.push("/home");
         } catch {
             setErrorMsg("Failed to log in");
         }
