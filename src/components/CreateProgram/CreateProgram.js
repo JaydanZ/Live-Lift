@@ -37,7 +37,7 @@ const CreateProgram = (props) => {
 
     const programData = {
       name: programName,
-      cycle: isCycle,
+      cycle: cycleFormat,
       length: daysInput,
     };
 

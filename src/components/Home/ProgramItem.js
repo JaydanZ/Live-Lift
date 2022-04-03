@@ -2,11 +2,23 @@ import React from "react";
 import "./ProgramItem.css";
 
 const ProgramItem = (props) => {
+  const editBtnHandler = () => {
+    props.onEditProgram();
+  };
   return (
     <div className="programItem">
       <div className="programItemHeader">{props.name}</div>
       <div className="programItemBody">
         Cycle: {props.cycle} | Length: {props.length} Days
+      </div>
+      <div className="programBtnContainer">
+        <button
+          className="programEditBtn"
+          type="button"
+          onClick={editBtnHandler}
+        >
+          Edit
+        </button>
       </div>
     </div>
   );

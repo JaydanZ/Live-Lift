@@ -7,6 +7,7 @@ import "./Home.css";
 const Home = () => {
   const [createProgram, setCreateProgram] = useState(false);
   const [programArr, setProgramArr] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const createProgramHandler = () => {
     setCreateProgram(true);
@@ -20,6 +21,10 @@ const Home = () => {
     programArrayCopy.push(programObj);
     setProgramArr(programArrayCopy);
     setCreateProgram(false);
+  };
+
+  const handlerEditModal = () => {
+    setShowModal(true);
   };
 
   return (
@@ -37,6 +42,7 @@ const Home = () => {
                       name={progEntry.name}
                       cycle={progEntry.cycle}
                       length={progEntry.length}
+                      onEditProgram={handlerEditModal}
                     />
                   ))}
                 </ul>
@@ -56,6 +62,7 @@ const Home = () => {
           <CreateProgram onProgramSubmit={programSubmitHandler} />
         )}
       </div>
+      <EditProgram show={showModal} onHide={() => setShowModal(false)} />
     </React.Fragment>
   );
 };
