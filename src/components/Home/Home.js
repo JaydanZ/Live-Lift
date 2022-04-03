@@ -1,15 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CreateProgram from "../CreateProgram/CreateProgram.js";
 import EditProgram from "../EditProgram/EditProgram.js";
 import "./Home.css";
+import axios from "axios"
+import {db} from "../../firebase"
+import {useAuth} from '../context/AuthContext'
+import {collection, doc, getDocs} from "firebase/firestore";
 
+
+let userData = [];
 const Home = () => {
   const [createProgram, setCreateProgram] = useState(false);
   const [programArr, setProgramArr] = useState([]);
+  const {currentUser} = useAuth();
+    const userCollectionRef = collection(db, "users");
 
   const createProgramHandler = () => {
     setCreateProgram(true);
   };
+
+  useEffect(() => {
+    getUserData();
+  },[]);
+
+  const getUserData = async () =>{
+    const data = await getDocs(userCollectionRef);
+    userData = data.docs.map((doc) => ({
+        ...doc.data()}));
+    userData = userData.filter((data) => {
+        if (data.userId === currentUser.uid){
+            return data;
+        }
+    })
+    console.log(userData);
+  }
 
   return (
     <React.Fragment>
