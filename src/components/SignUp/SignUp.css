@@ -1,3 +1,21 @@
 .btn-signupButton{
     color:red;
 }
+
+.signUpContainer{
+    color:white;
+    font-family:"Poppins";
+    box-shadow:2px 2px 9px black;
+}
+
+.signUpContainer button{
+    margin-top:20px;
+    background-color:rgb(158, 0, 0);
+    border-color:rgba(255, 0, 0, 0);
+}
+
+.signUpContainer p{
+    color:white;
+    text-align:center
+}
+

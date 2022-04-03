@@ -27,10 +27,11 @@ const Login = () =>{
     }
 
     return(
-        <React.Fragment>
-            <Card>
+            <div className="loginContainer">
+            <Card bg="dark">
                 <Card.Body>
-                <h2 className="text-center mb-4">Log In</h2>
+                <h2 className="text-center mb-4">LiveLift</h2>
+                <h5 className="text-center mb-4">Log In</h5>
                 {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
@@ -44,11 +45,9 @@ const Login = () =>{
                     <Button disabled={loading} className="w-100" type="submit">Log In</Button>
                 </Form>
                 </Card.Body>
+                <p>Don't have an account? <Link to="/signup">Sign up.</Link></p>
             </Card>
-            <div className="w-100 text-center mt-2">
-                Don't have an account? <Link to="/signup">Sign up.</Link>
             </div>
-        </ React.Fragment>
     );
 }
 

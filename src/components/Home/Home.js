@@ -52,7 +52,6 @@ const Home = () => {
       return progEntry;
     });
     programArrayCopy.push(programObj);
-    console.log(programArrayCopy);
     const userDoc = doc(db, "users", currentUser.uid);
     const newFields = { userPrograms: programArrayCopy };
     await updateDoc(userDoc, newFields);

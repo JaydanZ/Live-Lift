@@ -1,0 +1,16 @@
+.loginContainer{
+    color:white;
+    font-family:"Poppins";
+    box-shadow:2px 2px 9px black;
+}
+
+.loginContainer button{
+    margin-top:20px;
+    background-color:rgb(158, 0, 0);
+    border-color:rgba(255, 0, 0, 0);
+}
+
+.loginContainer p{
+    color:white;
+    text-align:center
+}
