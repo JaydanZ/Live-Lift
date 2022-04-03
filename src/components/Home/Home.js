@@ -14,6 +14,7 @@ const Home = () => {
   const [programArr, setProgramArr] = useState([]);
   const { currentUser, newAccount } = useAuth();
   const userCollectionRef = collection(db, "users");
+  const [showModal, setShowModal] = useState(false);
 
   const createProgramHandler = () => {
     setCreateProgram(true);
@@ -59,6 +60,10 @@ const Home = () => {
     setCreateProgram(false);
   };
 
+  const handlerEditModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <React.Fragment>
       <div className="homeCardContainer">
@@ -74,6 +79,7 @@ const Home = () => {
                       name={progEntry.programName}
                       cycle={progEntry.isCycle}
                       length={progEntry.days.length}
+                      onEditProgram={handlerEditModal}
                     />
                   ))}
                 </ul>
@@ -93,6 +99,7 @@ const Home = () => {
           <CreateProgram onProgramSubmit={programSubmitHandler} />
         )}
       </div>
+      <EditProgram show={showModal} onHide={() => setShowModal(false)} />
     </React.Fragment>
   );
 };
