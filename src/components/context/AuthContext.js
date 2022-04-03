@@ -17,6 +17,10 @@ export function AuthProvider({children}) {
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
+    function accountComplete (){
+        setNewAccount(false);
+    }
+
     const login = (email, password) =>{
         return auth.signInWithEmailAndPassword(email,password)
     }
@@ -36,6 +40,7 @@ export function AuthProvider({children}) {
     const value = {
         currentUser,
         newAccount,
+        accountComplete,
         login,
         logout,
         signup

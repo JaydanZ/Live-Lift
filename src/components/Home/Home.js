@@ -7,14 +7,16 @@ import axios from "axios";
 import { db } from "../../firebase";
 import { useAuth } from "../context/AuthContext";
 import { collection, doc, getDocs, updateDoc, setDoc } from "firebase/firestore";
+import {useHistory} from "react-router-dom"
 
 let userData = [];
 const Home = () => {
   const [createProgram, setCreateProgram] = useState(false);
   const [programArr, setProgramArr] = useState([]);
-  const { currentUser, newAccount } = useAuth();
+  const { currentUser, newAccount, accountComplete } = useAuth();
   const userCollectionRef = collection(db, "users");
   const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
 
   const createProgramHandler = () => {
     setCreateProgram(true);
@@ -23,6 +25,9 @@ const Home = () => {
   useEffect(() => {
     getUserData();
     completeSignup();
+    if (currentUser === null){
+        history.push("/signup");
+    }
   }, []);
 
   const completeSignup = async () =>{
@@ -31,6 +36,7 @@ const Home = () => {
             userId : currentUser.uid,
             userPrograms : [],
         })
+        accountComplete();
     }
 
 }
@@ -45,13 +51,14 @@ const Home = () => {
         return data;
       }
     });
-    setProgramArr(userData[0].userPrograms.programs.map((data) => data));
+    setProgramArr(userData[0].userPrograms.map((data) => data));
   };
   const programSubmitHandler = async (programObj) => {
     let programArrayCopy = programArr.map((progEntry) => {
       return progEntry;
     });
     programArrayCopy.push(programObj);
+    console.log(programArrayCopy);
     const userDoc = doc(db, "users", currentUser.uid);
     const newFields = { userPrograms: programArrayCopy };
     await updateDoc(userDoc, newFields);
