@@ -6,7 +6,7 @@ const ProgramItem = (props) => {
     <div className="programItem">
       <div className="programItemHeader">{props.name}</div>
       <div className="programItemBody">
-        Cycle: {props.cycle} | Length: {props.length} Days
+        Length: {props.length} Days
       </div>
     </div>
   );

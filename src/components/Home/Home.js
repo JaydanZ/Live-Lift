@@ -6,13 +6,13 @@ import "./Home.css";
 import axios from "axios";
 import { db } from "../../firebase";
 import { useAuth } from "../context/AuthContext";
-import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import { collection, doc, getDocs, updateDoc, setDoc } from "firebase/firestore";
 
 let userData = [];
 const Home = () => {
   const [createProgram, setCreateProgram] = useState(false);
   const [programArr, setProgramArr] = useState([]);
-  const { currentUser } = useAuth();
+  const { currentUser, newAccount } = useAuth();
   const userCollectionRef = collection(db, "users");
 
   const createProgramHandler = () => {
@@ -21,7 +21,18 @@ const Home = () => {
 
   useEffect(() => {
     getUserData();
+    completeSignup();
   }, []);
+
+  const completeSignup = async () =>{
+    if (newAccount === true){
+        await setDoc(doc(db, "users", currentUser.uid), {
+            userId : currentUser.uid,
+            userPrograms : [],
+        })
+    }
+
+}
 
   const getUserData = async () => {
     const data = await getDocs(userCollectionRef);

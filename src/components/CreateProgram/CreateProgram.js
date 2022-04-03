@@ -35,10 +35,19 @@ const CreateProgram = (props) => {
       cycleFormat = "No";
     }
 
+    const daysArray = [];
+
+    for (let i = 0; i < daysInput; i++){
+        daysArray.push({
+            Exercises: [],
+            workoutName: "",
+        });
+    }
+
     const programData = {
-      name: programName,
-      cycle: isCycle,
-      length: daysInput,
+      programName: programName,
+      isCycle: isCycle,
+      days: daysArray,
     };
 
     props.onProgramSubmit(programData);

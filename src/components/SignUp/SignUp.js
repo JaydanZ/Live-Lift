@@ -4,15 +4,25 @@ import React, {useRef, useEffect, useState} from "react";
 import {useAuth} from '../context/AuthContext'
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import {collection, setDoc, doc} from "firebase/firestore";
+import { db} from "../../firebase";
 
 const SignUp = () =>{
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const {signup} = useAuth()
+    const {signup, currentUser, logout} = useAuth()
     const history = useHistory()
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
+    const userCollectionRef = collection(db, "users");
+    let accountCreated = false;
+
+    useEffect(() =>{
+        if (currentUser !== null){
+            logout();
+        }
+    },[])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,7 +34,9 @@ const SignUp = () =>{
             setErrorMsg('');
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
+            accountCreated = true;
             history.push("/home");
+
         } catch {
             setErrorMsg("Failed to create account");
         }
