@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import CreateProgram from "../CreateProgram/CreateProgram.js";
-import EditProgram from "../EditProgram/EditProgram.js";
+import CreateProgram from "../CreateProgram/CreateProgram";
+import EditProgram from "../EditProgram/EditProgram";
+import ProgramItem from "./ProgramItem";
 import "./Home.css";
 
 const Home = () => {
@@ -11,6 +12,16 @@ const Home = () => {
     setCreateProgram(true);
   };
 
+  const programSubmitHandler = (programObj) => {
+    let programArrayCopy = programArr.map((progEntry) => {
+      return progEntry;
+    });
+
+    programArrayCopy.push(programObj);
+    setProgramArr(programArrayCopy);
+    setCreateProgram(false);
+  };
+
   return (
     <React.Fragment>
       <div className="homeCardContainer">
@@ -18,22 +29,31 @@ const Home = () => {
           <div className="homeCard">
             <div className="homeCardHeader">Home</div>
             <div className="programHeader">Your Programs</div>
-            {!programArr.length === 0 ? (
-              <div className="ProgramModalPlaceholder"></div>
-            ) : (
-              <div className="createProgramPrompt">
-                Create a program
-                <div className="createProgramBtn">
-                  <ion-icon
-                    name="add-circle"
-                    onClick={createProgramHandler}
-                  ></ion-icon>
-                </div>
+            {programArr.length > 0 && (
+              <div className="programListContainer">
+                <ul className="programList">
+                  {programArr.map((progEntry) => (
+                    <ProgramItem
+                      name={progEntry.name}
+                      cycle={progEntry.cycle}
+                      length={progEntry.length}
+                    />
+                  ))}
+                </ul>
               </div>
             )}
+            <div className="createProgramPrompt">
+              Create a program
+              <div className="createProgramBtn">
+                <ion-icon
+                  name="add-circle"
+                  onClick={createProgramHandler}
+                ></ion-icon>
+              </div>
+            </div>
           </div>
         ) : (
-          <CreateProgram />
+          <CreateProgram onProgramSubmit={programSubmitHandler} />
         )}
       </div>
     </React.Fragment>

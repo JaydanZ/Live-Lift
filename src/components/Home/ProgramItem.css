@@ -1,0 +1,28 @@
+.programItem {
+  font-family: "Poppins", sans-serif;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  width: 100%;
+  color: #e6e6e6;
+  background: #ff3c2e;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 15px;
+}
+
+.programItemHeader {
+  width: 90%;
+  margin-left: 10%;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.programItemBody {
+  width: 90%;
+  font-size: 0.8rem;
+  margin-left: 10%;
+}

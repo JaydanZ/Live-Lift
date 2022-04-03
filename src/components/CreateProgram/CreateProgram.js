@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CreateProgram.css";
 import Form from "react-bootstrap/Form";
 
-const CreateProgram = () => {
+const CreateProgram = (props) => {
   const [programName, setProgramName] = useState("");
   const [isCycle, setIsCycle] = useState(false);
   const [daysInput, setDaysInput] = useState("");
@@ -19,11 +19,36 @@ const CreateProgram = () => {
     setDaysInput(event.target.value);
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    let cycleFormat;
+
+    // Check fields
+    if (programName.length === 0 || daysInput.length === 0) {
+      return;
+    }
+
+    if (isCycle === "on") {
+      cycleFormat = "Yes";
+    } else {
+      cycleFormat = "No";
+    }
+
+    const programData = {
+      name: programName,
+      cycle: isCycle,
+      length: daysInput,
+    };
+
+    props.onProgramSubmit(programData);
+  };
+
   return (
     <React.Fragment>
       <div className="createProgramCard">
         <div className="createProgramHeader">Your Program</div>
-        <form>
+        <form onSubmit={submitHandler}>
           <div className="formContentWrapper">
             <div className="programFormNameField">
               Program Name
@@ -54,7 +79,9 @@ const CreateProgram = () => {
                 placeholder="Ex: 1"
               />
             </div>
-            <button type="button">Add Program</button>
+            <button type="submit">
+              <span className="buttonInner">Add Program</span>
+            </button>
           </div>
         </form>
       </div>
