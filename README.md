@@ -1,7 +1,18 @@
+# Livelift
+
 LiveLift is a react based webapp created for MegaHackathon 2022 to help with good health and well-being (#3 UN Sustainability Goals).
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Livelift UI
+
+### Home page
+![livelift-home](https://user-images.githubusercontent.com/73255741/184974511-9a657fd2-a009-4354-885e-128b3eed9f11.PNG)
+
+### Create program page
+![livelift-create](https://user-images.githubusercontent.com/73255741/184974584-45ed1072-8802-4c67-9a0d-bbe0b897614c.PNG)
+
 
 ## Available Scripts
 
