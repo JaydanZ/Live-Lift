@@ -1,9 +1,9 @@
 # Livelift
 
-LiveLift is a react based webapp created for MegaHackathon 2022 to help with good health and well-being (#3 UN Sustainability Goals).
+LiveLift is a bodybuilding strength training web applicaiton developed using React.js and created for MegaHackathon 2022 to help with good health and well-being (#3 UN Sustainability Goals).
 
+It's purpose is to allow the user to create an account, store and track their own custom made workout programs. Each program contains a list of workouts specified by the user when they create said program or added later on by editing their program.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Livelift UI
 
